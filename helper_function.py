@@ -237,3 +237,59 @@ def pred_and_plot(model: tf.keras.Model, filename: str, class_names: List[str]):
     plt.title(f"Prediction: {pred_class}")
     plt.axis("off")
     plt.show()
+
+def generate_grad_cam_1d(model, spectrum, class_index, layer_name):
+    """
+    Generates a 1D Grad-CAM heatmap for a given spectrum.
+
+    Args:
+        model (tf.keras.Model): The trained Keras model.
+        spectrum (np.ndarray): The input spectrum, should have shape (1, 1000, 1).
+        class_index (int): The index of the class to generate the CAM for.
+        layer_name (str): The name of the last convolutional layer.
+
+    Returns:
+        np.ndarray: The generated heatmap, resized to the original spectrum length.
+    """
+    # 1. Create a sub-model that outputs the feature maps of the target layer
+    #    and the final model predictions.
+    grad_model = tf.keras.models.Model(
+        inputs=[model.inputs],
+        outputs=[model.get_layer(layer_name).output, model.output]
+    )
+
+    # 2. Use GradientTape to compute gradients
+    with tf.GradientTape() as tape:
+        # Get the feature maps and the final predictions
+        conv_outputs, predictions = grad_model(spectrum)
+        # Get the score for the target class
+        loss = predictions[:, class_index]
+
+    # 3. Get the gradients of the class score with respect to the feature maps
+    grads = tape.gradient(loss, conv_outputs)
+
+    # 4. Compute the importance weights (alpha) by averaging the gradients
+    #    This is the core of Grad-CAM
+    pooled_grads = tf.reduce_mean(grads, axis=(0, 1))
+
+    # 5. Multiply the feature maps by their importance weights and sum them up
+    #    This creates the initial heatmap
+    conv_outputs = conv_outputs[0]
+    heatmap = conv_outputs @ pooled_grads[..., tf.newaxis]
+    heatmap = tf.squeeze(heatmap)
+
+    # 6. Apply ReLU to only keep the positive contributions
+    heatmap = tf.maximum(heatmap, 0)
+
+    # 7. Normalize the heatmap
+    if tf.reduce_max(heatmap) > 0:
+        heatmap /= tf.reduce_max(heatmap)
+
+    # 8. Upsample the heatmap to match the original spectrum length
+    #    We need to use reshape because tf.image.resize expects 3D/4D tensors
+    heatmap_resized = tf.image.resize(heatmap[tf.newaxis, :, tf.newaxis],
+                                      [spectrum.shape[1]],
+                                      method='bicubic')
+    
+    return tf.squeeze(heatmap_resized).numpy()
+
