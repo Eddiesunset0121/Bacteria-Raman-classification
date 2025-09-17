@@ -13,10 +13,7 @@ The repository is organized as follows:
 /src: Contains helper functions and scripts.
 
 ## Project Outline
-Inspired by the paper "Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning".
-
-
-https://github.com/csho33/bacteria-ID/blob/master/README.md 
+Inspired by the paper "Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning". https://www.nature.com/articles/s41467-019-12898-9
 
 This project develops a complete machine learning pipeline to classify 30 different bacterial species using Raman spectroscopy. The core of the project is a sophisticated 
 
