@@ -1,6 +1,7 @@
 # Project: Raman Classification of 30 Bacteria Species
 
-<img width="2325" height="2539" alt="Simple Use case diagram (1)" src="https://github.com/user-attachments/assets/e83658c7-26d9-4298-8a28-4e9a02abbae1" />
+
+<img width="2325" height="2400" alt="Simple Use case diagram" src="https://github.com/user-attachments/assets/65ccc6a0-3ed5-4ae8-bc4f-cee918f4d3b9" />
 
 
 ## Project Structure
