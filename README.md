@@ -55,9 +55,7 @@ After the first transfer learning stage to correct for "equipment drift," the mo
 The final model, adapted for a 5-class clinical dataset, demonstrates outstanding predictive power, achieving an overall accuracy of 97.6% on unseen clinical test data.
 
 
-The confusion matrix for the final model shows excellent performance, with diagonal accuracies ranging from 
-
-96% to 99%, making it a highly reliable tool for clinical classification.
+The confusion matrix for the final model shows excellent performance, with diagonal accuracies ranging from 96% to 99%, making it a highly reliable tool for clinical classification.
 
 
 
