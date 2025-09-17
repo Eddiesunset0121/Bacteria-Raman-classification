@@ -1,11 +1,9 @@
-# Bacteria-Raman-classification
-
-Project: Raman Classification of 30 Bacteria
+# Project: Raman Classification of 30 Bacteria
 
 <img width="2325" height="2539" alt="Simple Use case diagram (1)" src="https://github.com/user-attachments/assets/e83658c7-26d9-4298-8a28-4e9a02abbae1" />
 
 
-Project Structure
+## Project Structure
 The repository is organized as follows:
 
 /data/raw: Contains the original, raw datasets.
@@ -14,7 +12,7 @@ The repository is organized as follows:
 
 /src: Contains helper functions and scripts.
 
-Project Outline
+## Project Outline
 Inspired by the paper "Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning".
 
 
@@ -24,7 +22,7 @@ This project develops a complete machine learning pipeline to classify 30 differ
 
 One-Dimensional Convolutional Neural Network (1D CNN), which is first trained from scratch and then adapted for real-world clinical use cases through a two-stage transfer learning process.
 
-Project Detail
+## Project Detail
 🌟 Key Skills & Tools
 
 TensorFlow & Keras for deep learning
@@ -49,9 +47,7 @@ shuffling the data during the training process to ensure the model converges smo
 
 🌿 Model Development & Selection:
 
-A 
-
-PCA + SVC model was first developed to establish a baseline, achieving an accuracy of 41.4%. This demonstrated the complexity of the 30-class problem and justified a deep learning approach.
+A PCA + SVC model was first developed to establish a baseline, achieving an accuracy of 41.4%. This demonstrated the complexity of the 30-class problem and justified a deep learning approach.
 
 
 A 1D CNN was then built and iteratively improved. The most critical enhancement was the 
@@ -59,16 +55,11 @@ A 1D CNN was then built and iteratively improved. The most critical enhancement 
 two-stage transfer learning process. Architectural changes alone were insufficient, but adapting the model to new data distributions was the key to success.
 
 
-
 🌿 Final Model Performance:
 
-After the first transfer learning stage to correct for "equipment drift," the model's accuracy on the test set jumped from 53.7% to 
+After the first transfer learning stage to correct for "equipment drift," the model's accuracy on the test set jumped from 53.7% to 84.3%.
 
-84.3%.
-
-The final model, adapted for a 5-class clinical dataset, demonstrates outstanding predictive power, achieving an overall accuracy of 
-
-97.6% on unseen clinical test data.
+The final model, adapted for a 5-class clinical dataset, demonstrates outstanding predictive power, achieving an overall accuracy of 97.6% on unseen clinical test data.
 
 
 The confusion matrix for the final model shows excellent performance, with diagonal accuracies ranging from 
@@ -83,6 +74,4 @@ Rapid Identification: Offers a method for identifying pathogenic bacteria in min
 
 Point-of-Care Diagnostics: With portable Raman spectrometers, this model could be deployed in clinics for on-the-spot infection identification, enabling faster treatment decisions.
 
-Robust & Adaptable: The model is specifically designed to be robust against real-world challenges. The transfer learning stages have proven its ability to adapt to variations from 
-
-equipment drift and the increased noise inherent in clinical samples.
+Robust & Adaptable: The model is specifically designed to be robust against real-world challenges. The transfer learning stages have proven its ability to adapt to variations from equipment drift and the increased noise inherent in clinical samples.
