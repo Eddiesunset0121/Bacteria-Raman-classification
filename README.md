@@ -15,9 +15,7 @@ The repository is organized as follows:
 ## Project Outline
 Inspired by the paper "Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning". https://www.nature.com/articles/s41467-019-12898-9
 
-This project develops a complete machine learning pipeline to classify 30 different bacterial species using Raman spectroscopy. The core of the project is a sophisticated 
-
-One-Dimensional Convolutional Neural Network (1D CNN), which is first trained from scratch and then adapted for real-world clinical use cases through a two-stage transfer learning process.
+This project develops a complete machine learning pipeline to classify 30 different bacterial species using Raman spectroscopy. The core of the project is a sophisticated One-Dimensional Convolutional Neural Network (1D CNN), which is first trained from scratch and then adapted for real-world clinical use cases through a two-stage transfer learning process.
 
 ## Project Detail
 🌟 Key Skills & Tools
