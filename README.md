@@ -45,9 +45,7 @@ shuffling the data during the training process to ensure the model converges smo
 A PCA + SVC model was first developed to establish a baseline, achieving an accuracy of 41.4%. This demonstrated the complexity of the 30-class problem and justified a deep learning approach.
 
 
-A 1D CNN was then built and iteratively improved. The most critical enhancement was the 
-
-two-stage transfer learning process. Architectural changes alone were insufficient, but adapting the model to new data distributions was the key to success.
+A 1D CNN was then built and iteratively improved. The most critical enhancement was the two-stage transfer learning process. Architectural changes alone were insufficient, but adapting the model to new data distributions was the key to success.
 
 
 🌿 Final Model Performance:
